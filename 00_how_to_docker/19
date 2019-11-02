@@ -1,0 +1,12 @@
+docker run -d -ti -p 3000:3000 --name Abathur -v ~/:/root python:2-slim
+docker exec Abathur pip install Flask
+echo 'from flask import Flask \nshit = Flask(__name__) \n@shit.route("/") \ndef hello_world(): \n\treturn "<h1>Hello, WORLD!</h1>" ' > ~/privet.py
+docker exec -e FLASK_APP=/root/privet.py Abathur flask run --host=0.0.0.0 --port 3000
+
+
+
+#https://hub.docker.com/_/python
+#https://docs.docker.com/storage/volumes/
+#https://docs.docker.com/engine/reference/commandline/exec/
+#https://flask.palletsprojects.com/en/1.0.x/installation/#installation
+#https://flask.palletsprojects.com/en/1.0.x/quickstart/

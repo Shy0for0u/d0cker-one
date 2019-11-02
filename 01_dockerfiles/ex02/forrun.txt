@@ -1,0 +1,16 @@
+#### history about how start this shit ####
+
+#create daughter image
+
+docker build -t ft-rails:on-build -f ft-rails/Dockerfile .
+
+#main our the goal
+
+docker build -t forrun .
+
+#please, work!
+
+docker run -d --name test -ti --rm -p 3000:3000 forrun
+
+
+

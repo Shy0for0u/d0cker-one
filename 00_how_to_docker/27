@@ -1,0 +1,4 @@
+docker logs -f $(docker ps -aql)
+
+
+#https://docs.docker.com/engine/reference/commandline/logs/

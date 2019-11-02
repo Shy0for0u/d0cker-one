@@ -1,0 +1,24 @@
+FROM debian
+
+LABEL MAINTAINER=dgorold-
+
+ENV TS3SERVER_LICENSE=accept
+
+EXPOSE 9987/udp 30033 10011
+
+RUN apt-get update -q && \
+	apt-get -yq install wget bzip2 && \
+	apt-get clean && \
+    apt-get autoclean && \
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* && \
+    truncate -s 0 /var/log/*log
+
+RUN mkdir /teamspeak
+WORKDIR /teamspeak
+
+RUN wget http://dl.4players.de/ts/releases/3.8.0/teamspeak3-server_linux_amd64-3.8.0.tar.bz2 && \
+	tar xfv teamspeak3-server_linux_amd64-3.8.0.tar.bz2
+
+COPY entrypoint.sh .
+
+CMD ["./entrypoint.sh"]

@@ -1,0 +1,2 @@
+docker build -t ts3 .
+docker run run --rm --name test -p 9987:9987/udp -p 10011:10011 -p 30033:30033 ts3

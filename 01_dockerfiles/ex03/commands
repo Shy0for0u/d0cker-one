@@ -1,0 +1,2 @@
+docker build -t gitlab .
+docker run -it --rm -p 8080:80 -p 8022:22 --privileged gitlab
